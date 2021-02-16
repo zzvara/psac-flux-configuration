@@ -26,7 +26,7 @@ spec:
       externalPort: 9090
     extraArgs:
       - '--enable-insecure-login'
-      - '--namespace=kube-system'
+      - '--namespace=default'
       - '--token-ttl=864000'
       - '--insecure-bind-address=0.0.0.0'
       - '--insecure-port=9090'
