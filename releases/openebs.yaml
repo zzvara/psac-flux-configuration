@@ -5,9 +5,9 @@ metadata:
   namespace: kube-system
 spec:
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com
+    repository: https://openebs.github.io/charts
     name: openebs
-    version: 1.9.1
+    version: 2.6.0
   releaseName: openebs
   values:
     localprovisioner:
