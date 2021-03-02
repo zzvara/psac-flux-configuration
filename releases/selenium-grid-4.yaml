@@ -1,0 +1,46 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: selenium-grid
+  namespace: experimental
+spec:
+  releaseName: selenium-grid
+  chart:
+    git: https://github.com/pedrodotmc/docker-selenium
+    path: chart/selenium-grid
+    ref: selenium-grid-helm-chart
+  values:
+    isolateComponents: true
+    chromeNode:
+      replicas: 2
+      imageTag: "4.0.0-beta-1-20210215"
+    firefoxNode:
+      replicas: 1
+      imageTag: "4.0.0-beta-1-20210215"
+    operaNode:
+      replicas: 1
+      imageTag: "4.0.0-beta-1-20210215"
+    components:
+      distributor:
+        imageTag: "4.0.0-beta-1-20210215"
+      eventBus:
+        imageTag: "4.0.0-beta-1-20210215"
+      sessionMap:
+        imageTag: "4.0.0-beta-1-20210215"
+      sessionQueuer:
+        imageTag: "4.0.0-beta-1-20210215"
+      router:
+        imageTag: "4.0.0-beta-1-20210215"
+        resources:
+          requests:
+            memory: "1Gi"
+          limits:
+            memory: "1Gi"
+      extraEnvironmentVariables:
+        - name: JAVA_OPTS
+          value: "-Xmx20g -Xms2g -XX:+UseG1GC -DPOOL_MAX=512"
+        - name: SE_OPTS
+          value: "--max-threads 20"
+        - name: SE_SESSION_REQUEST_TIMEOUT
+          value: "15"
