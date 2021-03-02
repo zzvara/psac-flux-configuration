@@ -7,13 +7,13 @@ metadata:
     fluxcd.io/automated: "false"
 spec:
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com
-    name: openvpn
-    version: 4.2.2
+    git: https://github.com/helm/charts.git
+    path: stable/openvpn
+    ref: master
   releaseName: openvpn
   values:
     service:
-      type: ClusterIP
+      type: NodePort
       externalPort: 32100
       internalPort: 32100
       hostPort: 32100
