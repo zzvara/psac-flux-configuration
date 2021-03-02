@@ -13,7 +13,7 @@ spec:
   releaseName: openvpn
   values:
     service:
-      type: NodePort
+      type: ClusterIP
       externalPort: 32100
       internalPort: 32100
       hostPort: 32100
