@@ -20,7 +20,9 @@ spec:
       nodePort: 32100
     ipForwardInitContainer: true
     persistence:
-      enabled: false
+      enabled: true
+      storageClass: "hostpath"
+      size: 10Mi
     openvpn:
       OVPN_K8S_POD_NETWORK: "10.233.64.0"
       OVPN_K8S_POD_SUBNET: "255.255.192.0"
