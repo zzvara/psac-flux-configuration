@@ -21,7 +21,7 @@ spec:
     ipForwardInitContainer: true
     persistence:
       enabled: true
-      storageClass: "hostpath"
+      storageClass: "local"
       size: 10Mi
     openvpn:
       OVPN_K8S_POD_NETWORK: "10.233.64.0"
