@@ -13,7 +13,7 @@ spec:
   values:
     isolateComponents: true
     chromeNode:
-      replicas: 2
+      replicas: 1
       imageTag: "4.0.0-beta-1-20210215"
     firefoxNode:
       replicas: 1
@@ -39,8 +39,8 @@ spec:
             memory: "1Gi"
       extraEnvironmentVariables:
         - name: JAVA_OPTS
-          value: "-Xmx20g -Xms2g -XX:+UseG1GC -DPOOL_MAX=512"
+          value: "-Xmx1g -Xms1g -XX:+UseG1GC -DPOOL_MAX=512"
         - name: SE_OPTS
-          value: "--max-threads 20"
+          value: "--max-threads 1"
         - name: SE_SESSION_REQUEST_TIMEOUT
           value: "15"
