@@ -1,0 +1,20 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: registry
+  namespace: kube-system
+spec:
+  chart:
+    repository: https://helm.twun.io
+    name: docker-registry
+    version: 1.10.1
+  releaseName: registry
+  values:
+    service:
+      type: NodePort
+      port: 5000
+      nodePort: 5000
+    persistence:
+      enabled: true
+      storageClass: "local"
+      size: 1Gi
