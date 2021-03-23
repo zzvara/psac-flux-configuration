@@ -1,0 +1,31 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: default
+spec:
+  chart:
+    repository: https://helm.traefik.io/traefik
+    name: traefik
+    version: 9.17.2
+  releaseName: kubernetes-dashboard
+  values:
+    ports:
+      traefik:
+        port: 9000
+        expose: true
+        exposedPort: 8080
+
+      web:
+        port: 8000
+        expose: true
+        exposedPort: 80
+
+      websecure:
+        port: 8443
+        expose: true
+        exposedPort: 443
+  
+        tls:
+          enabled: false
+    
