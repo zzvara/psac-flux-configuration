@@ -1,0 +1,11 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+    name: jenkins-x
+    namespace: default
+spec:
+    chart:
+        git: https://github.com/jenkins-x/jx
+        ref: master
+        path: charts/jx
+    release-name: jenkins-x
